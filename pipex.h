@@ -6,12 +6,16 @@
 #include <string.h>
 #include <stdlib.h>
 #include <fcntl.h>
+#include <sys/wait.h>
 
-char	*ft_strdup(const char *s1);
-int	ft_strlen(const char *str);
-char	**ft_split(char const *s, char c);
-int     ft_countwords_bonus(const char *s, char c);
+/* utils */
+char    *ft_strdup(const char *s1);
+int     ft_strlen(const char *str);
+char    **ft_split(char const *s, char c);
 char	*ft_strjoin(char const *s1, char const *s2);
+
+/* parse path */
 char    **path_finder(char **argv, char **env);
 char    *parse_argv(char **argv, int cmd);
+
 #endif
