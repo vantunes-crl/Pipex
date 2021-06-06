@@ -20,10 +20,14 @@ int main(int argc, char **argv, char **env)
     }
     else
     {
+        int out = open("file2", O_WRONLY | O_CREAT , 0777);
+        wait(0);
+        dup2(out, STDOUT_FILENO);
+        close(out);
         dup2(fd[0], STDIN_FILENO);
         close(fd[0]);
         close(fd[1]);
-        execlp("grep", "grep", "rtt", NULL);
+        execlp("cat", "cat", NULL);
     }
 
     close(fd[0]);
