@@ -1,28 +1,41 @@
 #include "pipex.h"
+#include <sys/wait.h>
 
 int main(int argc, char **argv, char **env)
 {
-    int i = 0;
-    char **paths;
-    char *arg[] = {argv[0], argv[2]}; 
-    int ret = 0;
+    pid_t pid1;
+    int fd[2];
 
-    while(env)
+    if (pipe(fd) == -1)
+        printf("pipe failed\n");
+    pid1 = fork();
+    if (pid1 == -1)
+        printf("fork failed\n");
+    if (pid1 == 0)
     {
-        if (strncmp(env[i], "PATH=", 5) == 0)
-        {
-            paths = ft_split(env[i] + 5, ':');
-            break;
-        }
-        i++;
-    }
-    i = 0;
-    while (paths[i])
-    {
-        paths[i] = ft_strjoin(paths[i], "/");
-        paths[i] = ft_strjoin(paths[i], argv[1]);
-        ret = execve(paths[i], arg, env);
-        i++;
+        //child process 1
+        dup2(fd[1], STDOUT_FILENO);
+        close(fd[0]);
+        close(fd[1]);
+        execlp("ping", "ping", "-c", "5", "google.com", NULL);
     }
 
+
+    pid_t pid2 = fork();
+    if (pid2 < 0)
+        return (0);
+    if (pid2 == 0)
+    {
+        //child process 2
+        dup2(fd[0], STDIN_FILENO);
+        close(fd[0]);
+        close(fd[1]);
+        execlp("grep", "grep", "rtt", NULL);
+    }
+
+    close(fd[0]);
+    close(fd[1]);
+    
+    waitpid(pid2, NULL, 0);
+    waitpid(pid1, NULL, 0);
 }
