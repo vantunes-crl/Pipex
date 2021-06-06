@@ -1,15 +1,21 @@
 #include "pipex.h"
 
-char *parse_argv(char **argv, int cmd)
+char *ft_joinspace(char *s1, char *s2)
 {
-    char **args;
-    int i = 0;
+    char *new_str;
+    int i;
+    int j;
 
-    if (cmd == 0)
-        args = ft_split(argv[1], ' ');
-    else
-        args = ft_split(argv[2], ' ');
-    return (args[0]);
+    i = 0;
+    new_str = malloc(sizeof(char) * ft_strlen(s1) + ft_strlen(s2) + 2);
+    while (s1[i])
+        new_str[i] = s1[i++];
+    new_str[i++] = ' ';
+    i = 0;
+    while(s2[j])
+        new_str[i++] = s2[j++];
+    new_str[i] = '\0';
+    return(new_str);
 }
 
 char **path_finder(char **argv, char **env)

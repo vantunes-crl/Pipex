@@ -7,14 +7,18 @@ int main(int argc, char **argv, char **env)
     int i;
     char **paths;
 
-    paths = path_finder(argv, env);
     if (pipe(fd) == -1)
         printf("pipe failed\n");
     pid = fork();
     if (pid == -1)
         printf("fork failed\n");
+    paths = path_finder(argv, env);
     if (pid == 0)
     {
+        char *new_str;
+        char **args;
+        new_str = ft_joinspace(argv[2], argv[1]);
+        args = ft_split(new_str, ' ');
         dup2(fd[1], STDOUT_FILENO);
         close(fd[0]);
         close(fd[1]);
@@ -22,8 +26,8 @@ int main(int argc, char **argv, char **env)
         while (paths[i])
         {
             paths[i] = ft_strjoin(paths[i], "/");
-            paths[i] = ft_strjoin(paths[i], parse_argv(argv, 0));
-            execve(paths[i], ft_split(argv[2], ' '), NULL);
+            paths[i] = ft_strjoin(paths[i], args[0]);
+            execve(paths[i], args, NULL);
             i++;
         }
     }
@@ -32,7 +36,9 @@ int main(int argc, char **argv, char **env)
     pid2 = fork();
     if (pid2 == 0)
     {
+        char **args2;
         int out = open("file2", O_WRONLY | O_CREAT , 0777);
+        args2 = ft_split(argv[3], ' ');
         wait(0);
         dup2(out, STDOUT_FILENO);
         close(out);
@@ -43,13 +49,13 @@ int main(int argc, char **argv, char **env)
         while (paths[i])
         {
             paths[i] = ft_strjoin(paths[i], "/");
-            paths[i] = ft_strjoin(paths[i], parse_argv(argv, 1));
-            execve(paths[i], ft_split(argv[3], ' '), NULL);
+            paths[i] = ft_strjoin(paths[i], args2[0]);
+            execve(paths[i], args2, NULL);
             i++;
         }
     }
     close(fd[0]);
     close(fd[1]);
-    waitpid(pid, NULL, 0);
+    waitpid(pid2, NULL, 0);
     waitpid(pid, NULL, 0);
 }
