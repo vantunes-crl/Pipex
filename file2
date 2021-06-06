@@ -1,15 +1,13 @@
-total 84
--rw-rw-r-- 1 valerio valerio   227 Jun  6 14:11 Makefile
--rwxrwxr-x 1 valerio valerio 17112 Jun  6 14:04 a.out
--rw-rw-r-- 1 valerio valerio     0 Jun  6 13:22 file1
--rw-rw-r-- 1 valerio valerio   127 Jun  6 14:43 file2
--rw-rw-r-- 1 valerio valerio   403 Jun  6 14:38 parse_argv.c
--rw-rw-r-- 1 valerio valerio  1904 Jun  6 14:42 parse_argv.o
--rw-rw-r-- 1 valerio valerio   310 Jun  6 14:10 path_finder.c
--rw-rw-r-- 1 valerio valerio  1872 Jun  6 14:42 path_finder.o
--rwxrwxr-x 1 valerio valerio 17736 Jun  6 14:43 pipex
--rw-rw-r-- 1 valerio valerio  1331 Jun  6 14:43 pipex.c
--rw-rw-r-- 1 valerio valerio   525 Jun  6 14:24 pipex.h
--rw-rw-r-- 1 valerio valerio  3736 Jun  6 14:43 pipex.o
--rw-rw-r-- 1 valerio valerio  2029 Jun  6 14:39 utils.c
--rw-rw-r-- 1 valerio valerio  3688 Jun  6 14:42 utils.o
+Makefile
+file1
+file2
+parse_argv.c
+parse_argv.o
+path_finder.c
+path_finder.o
+pipex
+pipex.c
+pipex.h
+pipex.o
+utils.c
+utils.o
