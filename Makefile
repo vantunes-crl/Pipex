@@ -2,7 +2,7 @@ NAME = pipex
 
 FLAGS = -Wall -Werror -Wextra
 
-SRCS = pipex.c utils.c
+SRCS = pipex.c utils.c path_finder.c parse_argv.c
 
 OBJS = $(SRCS:.c=.o)
 
