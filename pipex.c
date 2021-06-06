@@ -19,14 +19,9 @@ int main(int argc, char **argv, char **env)
         close(fd[1]);
         execlp("ping", "ping", "-c", "5", "google.com", NULL);
     }
-
-
-    pid_t pid2 = fork();
-    if (pid2 < 0)
-        return (0);
-    if (pid2 == 0)
+    else
     {
-        //child process 2
+        //parent process
         dup2(fd[0], STDIN_FILENO);
         close(fd[0]);
         close(fd[1]);
@@ -36,6 +31,5 @@ int main(int argc, char **argv, char **env)
     close(fd[0]);
     close(fd[1]);
     
-    waitpid(pid2, NULL, 0);
     waitpid(pid1, NULL, 0);
 }
