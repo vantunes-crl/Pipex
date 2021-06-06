@@ -28,7 +28,10 @@ int main(int argc, char **argv, char **env)
             i++;
         }
     }
-    else
+
+    pid_t pid2;
+    pid2 = fork();
+    if (pid2 == 0)
     {
         int out = open("file2", O_WRONLY | O_CREAT , 0777);
         wait(0);
@@ -48,5 +51,6 @@ int main(int argc, char **argv, char **env)
     }
     close(fd[0]);
     close(fd[1]);
+    waitpid(pid, NULL, 0);
     waitpid(pid, NULL, 0);
 }
