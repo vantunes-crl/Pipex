@@ -13,7 +13,6 @@ int main(int argc, char **argv, char **env)
         printf("fork failed\n");
     if (pid1 == 0)
     {
-        //child process 1
         dup2(fd[1], STDOUT_FILENO);
         close(fd[0]);
         close(fd[1]);
@@ -21,7 +20,6 @@ int main(int argc, char **argv, char **env)
     }
     else
     {
-        //parent process
         dup2(fd[0], STDIN_FILENO);
         close(fd[0]);
         close(fd[1]);
@@ -30,6 +28,6 @@ int main(int argc, char **argv, char **env)
 
     close(fd[0]);
     close(fd[1]);
-    
+
     waitpid(pid1, NULL, 0);
 }
