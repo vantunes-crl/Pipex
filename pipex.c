@@ -1,5 +1,28 @@
 #include "pipex.h"
 
+static int error()
+{
+    perror("Error\n");
+    exit(0);
+}
+static char **path_finder(char **argv, char **env)
+{
+    int     i;
+    char    **paths;
+
+    i = 0;
+    while(env)
+    {
+        if (ft_strncmp(env[i], "PATH=", 5) == 0)
+        {
+            paths = ft_split(env[i] + 5, ':');
+            break;
+        }
+        i++;
+    }
+    return (paths);
+}
+
 static void call_parent(char **argv, int *fd, char **env)
 {
     char    **args;
@@ -8,9 +31,10 @@ static void call_parent(char **argv, int *fd, char **env)
     int     i;
 
     out = open(argv[4], O_WRONLY | O_CREAT , 0777);
+    if (out == -1)
+        error();
     paths = path_finder(argv, env);
     args = ft_split(argv[3], ' ');
-    wait(0);
     dup2(out, STDOUT_FILENO);
     close(out);
     dup2(fd[0], STDIN_FILENO);
@@ -56,10 +80,10 @@ int main(int argc, char **argv, char **env)
     int i;
 
     if (pipe(fd) == -1)
-        return (1);
+        error();
     pid = fork();
     if (pid == -1)
-        return 1;
+        error();
     if (pid == 0)
         call_child(argv, fd, env);
     else
