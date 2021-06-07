@@ -57,8 +57,8 @@ static void call_child(char **argv, int *fd, char **env)
     char    *new_str;
     char    **args;
 
-    paths = path_finder(argv, env);
     new_str = ft_joinspace(argv[2], argv[1]);
+    paths = path_finder(argv, env);
     args = ft_split(new_str, ' ');
     dup2(fd[1], STDOUT_FILENO);
     close(fd[0]);
@@ -68,7 +68,7 @@ static void call_child(char **argv, int *fd, char **env)
     {
         paths[i] = ft_strjoin(paths[i], "/");
         paths[i] = ft_strjoin(paths[i], args[0]);
-        execve(paths[i], args, NULL);
+        execve(paths[i], ft_split(new_str, ' '), NULL);
         i++;
     }
 }

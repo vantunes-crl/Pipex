@@ -1,10 +1,1 @@
-total 48
--rw-rw-r-- 1 valerio valerio   228 Jun  6 22:33 Makefile
--rw-rw-r-- 1 valerio valerio    22 Jun  6 23:39 file1
--rwxrwxr-x 1 valerio valerio     0 Jun  7 09:11 file2
--rw-rw-r-- 1 valerio valerio  1417 Jun  6 17:27 ft_split.c
--rw-rw-r-- 1 valerio valerio   655 Jun  6 23:27 path_finder.c
--rwxrwxr-x 1 valerio valerio 17720 Jun  7 09:17 pipex
--rw-rw-r-- 1 valerio valerio  1486 Jun  7 09:17 pipex.c
--rw-rw-r-- 1 valerio valerio   487 Jun  6 23:27 pipex.h
--rw-rw-r-- 1 valerio valerio   757 Jun  6 15:04 utils.c
+boa noite$

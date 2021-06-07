@@ -80,12 +80,12 @@ char			**ft_split(char const *s, char c)
 	if (s == NULL)
 		return (NULL);
 	lines = ft_countwords_bonus(s, c);
-	if (lines == 1 || lines == 0)
-	{
-		dest = malloc(sizeof(char *) + lines + 1);
-		dest[0] = ft_strdup(s);
-		dest[1] = "\n";
-	}
+	// if (lines == 1 || lines == 0)
+	// {
+	// 	dest = malloc(sizeof(char *) + lines + 1);
+	// 	dest[0] = ft_strdup(s);
+	// 	dest[1] = "\n";
+	// }
 	dest = (char **)malloc(sizeof(char *) * (lines + 1));
 	if (dest == NULL)
 		return (NULL);

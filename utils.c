@@ -77,9 +77,12 @@ char *ft_joinspace(char *s1, char *s2)
     i = 0;
     new_str = malloc(sizeof(char) * ft_strlen(s1) + ft_strlen(s2) + 2);
     while (s1[i])
-        new_str[i] = s1[i++];
+	{
+		new_str[i] = s1[i];
+		i++;
+	}
+    j = 0;
     new_str[i++] = ' ';
-    i = 0;
     while(s2[j])
         new_str[i++] = s2[j++];
     new_str[i] = '\0';
