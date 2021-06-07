@@ -7,7 +7,7 @@ SRCS = pipex.c utils.c ft_split.c
 OBJS = $(SRCS:.c=.o)
 
 $(NAME): $(OBJS)
-	gcc $(OBJS) -g -o $(NAME)
+	gcc $(OBJS) -o $(NAME)
 
 all: $(NAME) clean
 

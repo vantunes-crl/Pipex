@@ -23,7 +23,7 @@ int	ft_countwords_bonus(const char *s, char c)
 	return (count);
 }
 
-static	int		count_cols(const char *s, char c, int i)
+static	int	count_cols(const char *s, char c, int i)
 {
 	int	len;
 
@@ -72,7 +72,7 @@ static	char	**create_matriz(const char *s, char **dest, char c, int lines)
 	return (dest);
 }
 
-char			**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	int		lines;
 	char	**dest;
@@ -80,12 +80,6 @@ char			**ft_split(char const *s, char c)
 	if (s == NULL)
 		return (NULL);
 	lines = ft_countwords_bonus(s, c);
-	// if (lines == 1 || lines == 0)
-	// {
-	// 	dest = malloc(sizeof(char *) + lines + 1);
-	// 	dest[0] = ft_strdup(s);
-	// 	dest[1] = "\n";
-	// }
 	dest = (char **)malloc(sizeof(char *) * (lines + 1));
 	if (dest == NULL)
 		return (NULL);
