@@ -95,4 +95,5 @@ int	main(int argc, char **argv, char **env)
 	close(fd[0]);
 	close(fd[1]);
 	waitpid(pid, NULL, 0);
+	
 }
