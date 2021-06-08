@@ -14,6 +14,6 @@ char	**ft_split(char const *s, char c);
 char	*ft_joinspace(char *s1, char *s2);
 char	*ft_strjoin(char const *s1, char const *s2);
 int		ft_strncmp(const char *str1, const char *str2, size_t n);
-void    free_paths(char **paths);
+void	free_paths(char **paths);
 
 #endif

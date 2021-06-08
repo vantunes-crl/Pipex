@@ -1,14 +1,14 @@
 #include "pipex.h"
 
-void free_paths(char **paths)
+void	free_paths(char **paths)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (paths[i])
-    {
-        free(paths[i]);
-        i++;
-    }
-    free(paths);
+	i = 0;
+	while (paths[i])
+	{
+		free(paths[i]);
+		i++;
+	}
+	free(paths);
 }
