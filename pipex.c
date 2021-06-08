@@ -76,6 +76,7 @@ static	void	call_child(char **argv, int *fd, char **env)
 	}
 	free_paths(paths);
 	free_paths(args);
+	free(new_str);
 }
 
 int	main(int argc, char **argv, char **env)
