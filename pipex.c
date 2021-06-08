@@ -49,6 +49,8 @@ static	void	call_parent(char **argv, int *fd, char **env)
 		execve(paths[i], args, NULL);
 		i++;
 	}
+	free_paths(paths);
+	free_paths(args);
 }
 
 static	void	call_child(char **argv, int *fd, char **env)
@@ -72,6 +74,8 @@ static	void	call_child(char **argv, int *fd, char **env)
 		execve(paths[i], ft_split(new_str, ' '), NULL);
 		i++;
 	}
+	free_paths(paths);
+	free_paths(args);
 }
 
 int	main(int argc, char **argv, char **env)
@@ -95,5 +99,4 @@ int	main(int argc, char **argv, char **env)
 	close(fd[0]);
 	close(fd[1]);
 	waitpid(pid, NULL, 0);
-	
 }

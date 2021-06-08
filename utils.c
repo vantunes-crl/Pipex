@@ -2,7 +2,7 @@
 
 int	ft_strncmp(const char *str1, const char *str2, size_t n)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	if (n == 0)
@@ -32,7 +32,7 @@ char	*ft_strdup(const char *s1)
 
 int	ft_strlen(const char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i] != '\0')
@@ -68,11 +68,11 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (news);
 }
 
-char *ft_joinspace(char *s1, char *s2)
+char	*ft_joinspace(char *s1, char *s2)
 {
-	char *new_str;
-	int i;
-	int j;
+	char	*new_str;
+	int		i;
+	int		j;
 
 	i = 0;
 	new_str = malloc(sizeof(char) * ft_strlen(s1) + ft_strlen(s2) + 2);
@@ -83,8 +83,8 @@ char *ft_joinspace(char *s1, char *s2)
 	}
 	j = 0;
 	new_str[i++] = ' ';
-	while(s2[j])
+	while (s2[j])
 		new_str[i++] = s2[j++];
 	new_str[i] = '\0';
-	return(new_str);
+	return (new_str);
 }

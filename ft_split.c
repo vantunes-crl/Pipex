@@ -2,9 +2,9 @@
 
 int	ft_countwords_bonus(const char *s, char c)
 {
-	int i;
-	int flag;
-	int count;
+	int	i;
+	int	flag;
+	int	count;
 
 	flag = 0;
 	count = 0;
@@ -49,9 +49,9 @@ static	char	**clean_matriz(char const **dest, int j)
 
 static	char	**create_matriz(const char *s, char **dest, char c, int lines)
 {
-	int i;
-	int j;
-	int k;
+	int	i;
+	int	j;
+	int	k;
 
 	j = 0;
 	i = 0;
